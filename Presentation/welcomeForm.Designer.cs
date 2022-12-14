@@ -96,9 +96,9 @@
             this.lblLoginTitle.ForeColor = System.Drawing.Color.White;
             this.lblLoginTitle.Location = new System.Drawing.Point(159, 18);
             this.lblLoginTitle.Name = "lblLoginTitle";
-            this.lblLoginTitle.Size = new System.Drawing.Size(308, 59);
+            this.lblLoginTitle.Size = new System.Drawing.Size(415, 59);
             this.lblLoginTitle.TabIndex = 2;
-            this.lblLoginTitle.Text = "Visit Registrer";
+            this.lblLoginTitle.Text = "Visitor Registration";
             this.lblLoginTitle.Click += new System.EventHandler(this.lblLoginTitle_Click);
             // 
             // pictureBox2
