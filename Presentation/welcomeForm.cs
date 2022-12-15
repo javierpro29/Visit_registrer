@@ -46,6 +46,8 @@ namespace Presentation
             {
                 timer2.Stop();
                 this.Close();
+                homePage home = new homePage();
+                home.Show();
             }
         }
 
