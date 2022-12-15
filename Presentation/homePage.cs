@@ -16,5 +16,20 @@ namespace Presentation
         {
             InitializeComponent();
         }
+
+        private void bunifuFlatButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void homePage_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void homePage_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

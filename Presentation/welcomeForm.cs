@@ -48,6 +48,7 @@ namespace Presentation
                 this.Close();
                 homePage home = new homePage();
                 home.Show();
+                login log = new login();
             }
         }
 
