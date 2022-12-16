@@ -66,6 +66,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="usuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="usuarios.Designer.cs">
+      <DependentUpon>usuarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="welcomeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +94,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="usuarios.resx">
+      <DependentUpon>usuarios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="welcomeForm.resx">
       <DependentUpon>welcomeForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -122,6 +131,51 @@
       <Project>{ef7418a8-5595-4f3a-bb6b-71a2bdc594e5}</Project>
       <Name>Entity</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-alternar-pantalla-completa-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-línea-horizontal-96.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-salida-100 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-salida-100 %281%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-multitud-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-buscar-cliente-100 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-usuario-masculino-en-círculo-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\visitas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\consultar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\usuarios.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Group.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Group 128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Group 130.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-casa-96.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
