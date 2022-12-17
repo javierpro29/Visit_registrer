@@ -82,7 +82,8 @@ namespace Presentation
 
         private void bunifuFlatButton2_Click(object sender, EventArgs e)
         {
-
+            openChildForm(new consultas());
+            lblTitulo.Text = "Consultar";
         }
 
         private Form activeForm = null;
@@ -102,7 +103,8 @@ namespace Presentation
 
         private void btnVisitas_Click(object sender, EventArgs e)
         {
-            openChildForm(new usuarios());
+            openChildForm(new visitas());
+            lblTitulo.Text = "Visitas";
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -112,19 +114,45 @@ namespace Presentation
 
         private void pictureBox5_Click(object sender, EventArgs e)
         {
-            openChildForm(new usuarios());
+            openChildForm(new visitas());
+            lblTitulo.Text = "Visitas";
         }
 
         private void bunifuFlatButton4_Click(object sender, EventArgs e)
         {
+            lblTitulo.Text = "Home";
+
             try
             {
                 openChildForm(null);
+                
             }
             catch (Exception ex)
             {
 
             }
+        }
+
+        private void bunifuFlatButton3_Click(object sender, EventArgs e)
+        {
+            openChildForm(new usuarios());
+            lblTitulo.Text = "Usuarios";
+        }
+
+        private void pnForm_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pictureBox7_Click(object sender, EventArgs e)
+        {
+            lblTitulo.Text = "Consultar";
+        }
+
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
+            openChildForm(new usuarios());
+            lblTitulo.Text = "Usuarios";
         }
     }
 }

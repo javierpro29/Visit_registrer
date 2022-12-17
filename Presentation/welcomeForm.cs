@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Business;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,9 @@ namespace Presentation
 {
     public partial class welcomeForm : Form
     {
+
+        B_usuarios objUsuarios = new B_usuarios();
+
         public welcomeForm()
         {
             InitializeComponent();

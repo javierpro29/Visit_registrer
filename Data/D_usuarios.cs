@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using Entity;
 
 namespace Data
 {
@@ -27,6 +28,84 @@ namespace Data
             SqlDataReader reader = cmd.ExecuteReader();
 
             return reader.Read();
+
+        }
+
+        public List<E_usuarios> mostarUsuarios(String buscar)
+        {
+            SqlDataReader leerFila;
+            SqlCommand cmd = new SqlCommand("SP_BUSCARUSUARIO", conexion);
+            cmd.CommandType = CommandType.StoredProcedure;
+            conexion.Open();
+
+            cmd.Parameters.AddWithValue("@BUSCARNOMBRE", buscar);
+            leerFila = cmd.ExecuteReader();
+
+            List<E_usuarios> Listar = new List<E_usuarios>();
+            while (leerFila.Read())
+            {
+                Listar.Add(new E_usuarios
+                {
+                    Id = leerFila.GetInt32(0),
+                    Codigo = leerFila.GetString(1),
+                    Nombre = leerFila.GetString(2),
+                    Apellido = leerFila.GetString(3),
+                    Fecha_nacimiento = leerFila.GetDateTime(4),
+                    Permisos = leerFila.GetString(5),
+                    Username = leerFila.GetString(6),
+                    Password = leerFila.GetString(7),
+                   
+                });
+            }
+            conexion.Close();
+            leerFila.Close();
+            return Listar;
+        }
+
+        public void insertarUsuarios(E_usuarios usuario)
+        {
+            SqlCommand cmd = new SqlCommand("SP_INSERTARUSUARIO", conexion);
+            cmd.CommandType = CommandType.StoredProcedure;
+            conexion.Open();
+
+            cmd.Parameters.AddWithValue("@NOMBRE", usuario.Nombre);
+            cmd.Parameters.AddWithValue("@APELLIDO", usuario.Apellido);
+            cmd.Parameters.AddWithValue("@FECHA_NACIMIENTO", usuario.Fecha_nacimiento);
+            cmd.Parameters.AddWithValue("@PERMISOS", usuario.Permisos);
+            cmd.Parameters.AddWithValue("@USERNAME", usuario.Username);
+            cmd.Parameters.AddWithValue("@PASSWORD", usuario.Password);
+
+            cmd.ExecuteNonQuery();
+            conexion.Close();
+        }
+
+        public void editarUsuarios(E_usuarios usuario)
+        {
+            SqlCommand cmd = new SqlCommand("SP_EDITANDOUSUARIO", conexion);
+            cmd.CommandType = CommandType.StoredProcedure;
+            conexion.Open();
+
+            cmd.Parameters.AddWithValue("@ID", usuario.Id);
+            cmd.Parameters.AddWithValue("@NOMBRE", usuario.Nombre);
+            cmd.Parameters.AddWithValue("@APELLIDO", usuario.Apellido);
+            cmd.Parameters.AddWithValue("@FECHA_NACIMIENTO", usuario.Fecha_nacimiento);
+            cmd.Parameters.AddWithValue("@PERMISOS", usuario.Permisos);
+            cmd.Parameters.AddWithValue("@USERNAME", usuario.Username);
+            cmd.Parameters.AddWithValue("@PASSWORD", usuario.Password);
+
+            cmd.ExecuteNonQuery();
+            conexion.Close();
+        }
+
+        public void eliminarUsuario(E_usuarios usuario)
+        {
+            SqlCommand cmd = new SqlCommand("SP_ELIMINARUSUARIO", conexion);
+            cmd.CommandType = CommandType.StoredProcedure;
+            conexion.Open();
+
+            cmd.Parameters.AddWithValue("@ID", usuario.Id);
+            cmd.ExecuteNonQuery();
+            conexion.Close();
 
         }
 

@@ -42,7 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="D_aulas.cs" />
+    <Compile Include="D_consultas.cs" />
+    <Compile Include="D_edificios.cs" />
     <Compile Include="D_usuarios.cs" />
+    <Compile Include="D_visitas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

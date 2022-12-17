@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entity
 {
-    internal class E_usuarios
+    public class E_usuarios
     {
 
         private int _id;
