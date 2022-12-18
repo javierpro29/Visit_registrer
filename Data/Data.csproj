@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="D_configuracion.cs" />
     <Compile Include="D_aulas.cs" />
     <Compile Include="D_consultas.cs" />
     <Compile Include="D_edificios.cs" />

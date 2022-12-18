@@ -136,7 +136,7 @@ namespace Presentation
                     EntVisitas.Name = txtNombre.Text.ToUpper();
                     EntVisitas.Apellido = txtApellido.Text.ToUpper();
                     EntVisitas.Carrera = txtCarrera.Text.ToUpper();
-                    EntVisitas.Correo = txtCarrera.Text.ToUpper();
+                    EntVisitas.Correo = txtCorreo.Text.ToUpper();
                     EntVisitas.Edifico = Convert.ToInt32(cmbEdifios.SelectedValue.ToString());
                     EntVisitas.Aula = Convert.ToInt32(cmbAulas.SelectedValue.ToString());
                     EntVisitas.HoraEntrada = dtEntrada.Value;

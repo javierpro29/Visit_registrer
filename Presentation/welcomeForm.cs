@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Entity.cache;
 
 namespace Presentation
 {
@@ -60,6 +61,11 @@ namespace Presentation
         {
             this.Opacity = 0.0;
             timer1.Start();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+            lblUserActive.Text = Convert.ToString(C_login.nombre + " " + C_login.apellido);  
         }
     }
 }

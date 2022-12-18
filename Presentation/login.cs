@@ -36,7 +36,8 @@ namespace Presentation
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-
+            imgMessage.Visible = false;
+            
         }
 
         
@@ -44,34 +45,72 @@ namespace Presentation
         private void btnLogin_Click(object sender, EventArgs e)
         {
 
-            if(objUsuarios.login(txtUsername.Text, txtPassword.Text))
+            if(txtUsername.Text != "" || txtPassword.Text != "")
             {
-                this.Hide();
-                welcomeForm welcomepage = new welcomeForm();
-                welcomepage.Show();
-            } 
+                B_usuarios objUsuarios = new B_usuarios();
+                var validLogin = objUsuarios.login(txtUsername.Text, txtPassword.Text);
 
+                if (validLogin == true)
+                {
+                    this.Hide();
+                    welcomeForm welcomepage = new welcomeForm();
+                    welcomepage.Show();
+                }
+                else
+                {
+                    errorMessage("El username o password no es valido \n Porfavor intente nuevamente");
+                    imgMessage.Visible = true;
+                }
+            }
+            else
+            {
+                errorMessage("Los campos no pueden estar vacios");
+            }
 
-           // conexion.Open();
-           // SqlCommand cmd = new SqlCommand("SELECT USERNAME, PASSWORD FROM USUARIOS WHERE USERNAME = @USERNAME AND PASSWORD = @PASSWORD", conexion);
-           // cmd.Parameters.AddWithValue("@USERNAME", txtUsername.Text);
-           // cmd.Parameters.AddWithValue("@PASSWORD", txtPassword.Text);
-
-           //SqlDataReader reader = cmd.ExecuteReader();
-
-           // if (reader.Read())
-           // {
-           //     conexion.Close();
-           //     this.Hide();
-           //     welcomeForm welcomepage = new welcomeForm();
-           //     welcomepage.Show();
-                
-           // }
         }
+
+        private void errorMessage(string msg)
+        {
+            lblMensaje.Text = msg;
+            imgMessage.Visible = true;
+        }
+
 
         private void login_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtUsername_MouseClick(object sender, MouseEventArgs e)
+        {
+            
+        }
+
+        private void txtPassword_MouseClick(object sender, MouseEventArgs e)
+        {
+           
+        }
+
+        private void txtUsername_MouseClick_1(object sender, MouseEventArgs e)
+        {
+            errorMessage("");
+            imgMessage.Visible = false;
+        }
+
+        private void txtPassword_MouseClick_1(object sender, MouseEventArgs e)
+        {
+            errorMessage("");
+            imgMessage.Visible = false;
+        }
+
+        private void txtUsername_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

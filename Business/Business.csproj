@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="B_aulas.cs" />
+    <Compile Include="B_configuracion.cs" />
     <Compile Include="B_consultas.cs" />
     <Compile Include="B_edificios.cs" />
     <Compile Include="B_usuarios.cs" />

@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 using Entity;
+using Entity.cache;
 
 namespace Data
 {
@@ -16,20 +17,45 @@ namespace Data
         SqlConnection conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["conection"].ConnectionString);
 
 
-        public bool Login(string USERNAME, string PASSWORD)
+        public bool login(string USERNAME, string PASSWORD)
         {
-            SqlCommand cmd = new SqlCommand("SP_VALIDAR_USUARIO", conexion);
-            cmd.CommandType = CommandType.StoredProcedure;
             conexion.Open();
 
-            cmd.Parameters.AddWithValue("@USERNAME", USERNAME);
-            cmd.Parameters.AddWithValue("@PASSWORD", PASSWORD);
+            using (var cmd = new SqlCommand("SP_VALIDAR_USUARIO", conexion))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
 
-            SqlDataReader reader = cmd.ExecuteReader();
+                cmd.Parameters.AddWithValue("@USERNAME", USERNAME);
+                cmd.Parameters.AddWithValue("@PASSWORD", PASSWORD);
 
-            return reader.Read();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        C_login.id = reader.GetInt32(0);
+                        C_login.nombre = reader.GetString(2);
+                        C_login.apellido = reader.GetString(3);
+                        C_login.username = reader.GetString(6);
+                        C_login.password = reader.GetString(7);
+                        C_login.permisos = reader.GetString(5);
+
+
+                    }
+
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
 
         }
+
+
 
         public List<E_usuarios> mostarUsuarios(String buscar)
         {

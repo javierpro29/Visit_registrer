@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entity.cache;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -135,8 +136,16 @@ namespace Presentation
 
         private void bunifuFlatButton3_Click(object sender, EventArgs e)
         {
-            openChildForm(new usuarios());
-            lblTitulo.Text = "Usuarios";
+            if(C_login.permisos == "ADMINISTRADOR")
+            {
+                openChildForm(new usuarios());
+                lblTitulo.Text = "Usuarios";
+            }
+            else
+            {
+                MessageBox.Show("Usted no cuenta con los permisos para acceder a esta funcionalidad", "Ejemplo Mensaje OKCanccel", MessageBoxButtons.OKCancel);
+            }
+
         }
 
         private void pnForm_Paint(object sender, PaintEventArgs e)
@@ -151,8 +160,43 @@ namespace Presentation
 
         private void pictureBox6_Click(object sender, EventArgs e)
         {
-            openChildForm(new usuarios());
-            lblTitulo.Text = "Usuarios";
+            if (C_login.permisos == "ADMINISTRADOR")
+            {
+                openChildForm(new usuarios());
+                lblTitulo.Text = "Usuarios";
+            }
+            else
+            {
+                MessageBox.Show("Usted no cuenta con los permisos para acceder a esta funcionalidad", "Ejemplo Mensaje OKCanccel", MessageBoxButtons.OKCancel);
+            }
+        }
+
+        private void bunifuFlatButton4_Click_1(object sender, EventArgs e)
+        {
+
+            if (C_login.permisos == "ADMINISTRADOR")
+            {
+                openChildForm(new configuracion());
+                lblTitulo.Text = "Configuracion";
+            }
+            else
+            {
+                MessageBox.Show("Usted no cuenta con los permisos para acceder a esta funcionalidad", "Ejemplo Mensaje OKCanccel", MessageBoxButtons.OKCancel);
+            }
+
+        }
+
+        private void pictureBox8_Click(object sender, EventArgs e)
+        {
+            if (C_login.permisos == "ADMINISTRADOR")
+            {
+                openChildForm(new configuracion());
+                lblLoginTitle.Text = "Configuracion";
+            }
+            else
+            {
+                MessageBox.Show("Usted no cuenta con los permisos para acceder a esta funcionalidad", "Ejemplo Mensaje OKCanccel", MessageBoxButtons.OKCancel);
+            }
         }
     }
 }
