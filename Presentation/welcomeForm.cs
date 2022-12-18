@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Business;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,11 +8,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Entity.cache;
 
 namespace Presentation
 {
     public partial class welcomeForm : Form
     {
+
+        B_usuarios objUsuarios = new B_usuarios();
+
         public welcomeForm()
         {
             InitializeComponent();
@@ -46,6 +51,9 @@ namespace Presentation
             {
                 timer2.Stop();
                 this.Close();
+                homePage home = new homePage();
+                home.Show();
+                login log = new login();
             }
         }
 
@@ -53,6 +61,11 @@ namespace Presentation
         {
             this.Opacity = 0.0;
             timer1.Start();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+            lblUserActive.Text = Convert.ToString(C_login.nombre + " " + C_login.apellido);  
         }
     }
 }
